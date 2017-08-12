@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ncurses.h>
 #include <math.h>
@@ -25,7 +26,10 @@ int main(int argc, char **argv) {
     char mesg[] = "O_o";
     int row, col;
 
-    initscr();
+    if (!initscr()) {
+        exit(1);
+    };
+
     getmaxyx(stdscr, row, col);
 
     int y = row / 2;
